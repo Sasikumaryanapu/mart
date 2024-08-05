@@ -1,0 +1,12 @@
+.dropdownContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.sectionTitle {
+  color: rgb(106, 134, 106);
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
