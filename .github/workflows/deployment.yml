@@ -33,5 +33,5 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GHTOKEN }}
-          publish_dir: ./dist
+          publish_dir: ./build
           publish_branch: gh-pages
