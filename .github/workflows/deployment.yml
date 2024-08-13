@@ -33,7 +33,7 @@ jobs:
 
       # install dependencies
       - name: Install dependencies
-        run: npm i
+        run: npm i --legacy-peer-deps
 
       # build the react app
       - name: Build
