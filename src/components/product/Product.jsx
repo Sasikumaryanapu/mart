@@ -86,7 +86,7 @@ const Product = () => {
     let timer;
 
     const fetchProducts = () => {
-      axios.post(`${process.env.REACT_APP_HIMALAYA_API}/products/getByQuery`, {
+      axios.post(`http://localhost:3010/products/getByQuery`, {
         search: query
       })
       .then(response => {
@@ -107,12 +107,12 @@ const Product = () => {
   }, [query]); 
   useEffect(() => {
     const parsePrice = (priceStr) => {
-      return parseFloat(priceStr.replace(/[^0-9.-]+/g, ""));
+      return parseFloat(priceStr?.replace(/[^0-9.-]+/g, ""));
     };
     if (sorting === 0) {
-      const sortedData = data.sort((a, b) => {
-        const priceA = parsePrice(a.price);
-        const priceB = parsePrice(b.price);
+      const sortedData = data?.sort((a, b) => {
+        const priceA = parsePrice(a?.price);
+        const priceB = parsePrice(b?.price);
 
         return priceA - priceB;
       });
@@ -120,9 +120,9 @@ const Product = () => {
     }
 
     if (sorting === 1) {
-      const sortedData = data.sort((a, b) => {
-        const priceA = parsePrice(a.price);
-        const priceB = parsePrice(b.price);
+      const sortedData = data?.sort((a, b) => {
+        const priceA = parsePrice(a?.price);
+        const priceB = parsePrice(b?.price);
 
         return priceB - priceA;
       });

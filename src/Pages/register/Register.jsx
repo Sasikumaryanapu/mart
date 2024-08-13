@@ -7,6 +7,17 @@ import { useState } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { setUserData } from "../../redux/slices/userSlices";
+import { makeStyles } from "@mui/styles";
+
+const useStyles = makeStyles({
+  link: {
+    textDecoration: 'none', // Remove default underline
+    color: 'inherit', // Use the color from the parent or specify your own
+    '&:hover': {
+      textDecoration: 'underline', // Add underline on hover
+    },
+  },
+});
 
 const Register = () => {
   const [user, setUser] = useState({
@@ -20,6 +31,8 @@ const Register = () => {
   const [snackbarSeverity, setSnackbarSeverity] = useState("success"); // 'success' or 'error'
   const dispatch = useDispatch();
   const navigate = useNavigate()
+  const classes = useStyles();
+
   const userHandler = (e) => {
     const { name, value } = e.target;
     setUser((prev) => ({ ...prev, [name]: value }));
@@ -48,8 +61,8 @@ const Register = () => {
       setSnackbarMessage("Successfully Registered!");
       setSnackbarSeverity("success");
     } catch (error) {
-      console.error(error);
-      setSnackbarMessage("Registration Failed. Please try again.");
+      console.log(error,'hello');
+      setSnackbarMessage(error.response.data.message);
       setSnackbarSeverity("error");
     } finally {
       setSnackbarOpen(true);
@@ -120,7 +133,10 @@ const Register = () => {
       <Button variant="contained" onClick={saveHandler}>
         CREATE
       </Button>
-      <Link to="/">or Return to Store</Link>
+       <div>
+      <Link to='/signin' className={classes.link}>Sign in</Link><br/>
+      <Link to="/" className={classes.link}>Return to Store</Link>
+    </div>
     </div>
   );
 };

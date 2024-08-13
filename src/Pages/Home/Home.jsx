@@ -69,7 +69,7 @@ const Home = () => {
           </BannerText>
           <BannerButton
             component={Link}
-            to="/overview/669ffdafd233551429073e1a"
+            to="/overview/66ba5701ff2cfde233971321"
           >
             Shop Now
           </BannerButton>
