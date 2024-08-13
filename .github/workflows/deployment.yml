@@ -29,8 +29,8 @@ jobs:
       - name: Build project
         run: npm run build
 
-    - name: List files in build directory
-      run: ls -la ./dist
+      - name: List files in build directory
+        run: ls -la ./dist
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
