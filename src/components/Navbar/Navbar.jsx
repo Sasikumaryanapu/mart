@@ -84,7 +84,7 @@ const Navbar = () => {
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
             <img
-              src="src/assets/Navbar/himalaya-logo.png"
+              src="public\assets\Navbar\himalaya-logo.png"
               alt="Himalaya Logo"
               style={{ width: 150, height: 50 }}
             />
