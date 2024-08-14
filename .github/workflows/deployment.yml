@@ -40,6 +40,6 @@ jobs:
 
     - name: Deploy
       run: |
-        npx gh-pages -d dist
+        npm run deploy
       env:
         GITHUB_TOKEN: ${{ secrets.GHTOKEN }}  
