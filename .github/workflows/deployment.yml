@@ -1,14 +1,10 @@
-name: CI/CD
+# .github/workflows/deploy.yml
+name: Deploy Vite App
 
 on:
   push:
     branches:
-      - main
-      - master
-  pull_request:
-    branches:
-      - main
-      - master
+      - main  # Change this to your default branch if it's different
 
 jobs:
   build:
@@ -21,20 +17,19 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20'
+          node-version: '18'  # Specify the Node.js version you need
 
       - name: Install dependencies
-        run: npm install --legacy-peer-deps
+        run: npm install
 
       - name: Build project
         run: npm run build
 
-      - name: Set up Git for gh-pages
-        run: |
-          git config --global user.name "github-actions"
-          git config --global user.email "github-actions@github.com"
+      - name: List the build
+        run: ls -ln ./dist
 
       - name: Deploy to GitHub Pages
-        run: npm run deploy
-        env:
-          GH_TOKEN: ${{ secrets.GHTOKEN }}
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          deploy_key: ${{ secrets.DEPLOY_KEY }}
+          publish_dir: ./dist
