@@ -13,8 +13,8 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [16.x]  # Ensure Node.js version is 16.x or higher
-
+        node-version: [16.x] 
+        
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
@@ -39,6 +39,7 @@ jobs:
         git config --global user.email "actions@github.com"
 
     - name: Deploy
-      run: npm run deploy
+      run: |
+        npx gh-pages -d dist
       env:
-        GITHUB_TOKEN: ${{ secrets.GHTOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
