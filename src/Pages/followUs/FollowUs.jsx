@@ -12,12 +12,14 @@ const StyledModalBox = styled(Paper)(({ theme }) => ({
   width: "90%",
   maxWidth: 800,
   display: "flex",
+  flexDirection: "column",
   bgcolor: "#ffffff",
   border: `1px solid ${theme.palette.divider}`,
   boxShadow: theme.shadows[24],
   padding: theme.spacing(4),
   [theme.breakpoints.down("sm")]: {
-    flexDirection: "column",
+    width: "95%",
+    padding: theme.spacing(2),
   },
 }));
 
@@ -27,6 +29,10 @@ const Container = styled(Box)(({ theme }) => ({
   paddingTop: theme.spacing(5),
   [theme.breakpoints.up("sm")]: {
     width: "70%",
+  },
+  [theme.breakpoints.down("sm")]: {
+    width: "95%",
+    padding: theme.spacing(2),
   },
 }));
 
@@ -72,6 +78,9 @@ const Child1 = styled(Box)(({ theme }) => ({
   [theme.breakpoints.up("sm")]: {
     flexDirection: "row",
     justifyContent: "space-between",
+  },
+  [theme.breakpoints.down("sm")]: {
+    gap: theme.spacing(2),
   },
 }));
 
@@ -124,10 +133,10 @@ const NavigationButton = styled(IconButton)(({ theme }) => ({
 }));
 
 const images = [
-  "src/assets/Home/followUs-banner1.webp",
-  "src/assets/Home/followUs-banner2.webp",
-  "src/assets/Home/followUs-banner3.webp",
-  "src/assets/Home/followUs-banner4.webp"
+  "/assets/Home/followUs-banner1.webp",
+  "/assets/Home/followUs-banner2.webp",
+  "/assets/Home/followUs-banner3.webp",
+  "/assets/Home/followUs-banner4.webp"
 ];
 
 const contents = [

@@ -9,14 +9,18 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import CloseIcon from '@mui/icons-material/Close';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import axios from 'axios';
+import Axios from '../../api/Api.js';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   container: {
     display: 'grid',
     gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
     gap: '20px',
     padding: '40px 100px',
     backgroundColor: '#f0f2ef',
+    [theme.breakpoints.down('md')]: {
+      padding: '20px',
+    },
   },
   section: {
     display: 'flex',
@@ -36,6 +40,10 @@ const useStyles = makeStyles({
     display: 'flex',
     gap: '10px',
     marginTop: '10px',
+    [theme.breakpoints.down('sm')]: {
+      flexDirection: 'row',
+      alignItems: 'center',
+    },
   },
   disclaimer: {
     backgroundColor: '#f0f2ef',
@@ -53,12 +61,12 @@ const useStyles = makeStyles({
     fontSize: 'small',
     fontWeight: 400,
   },
-});
+}));
 
 const Footer = () => {
   const classes = useStyles();
   const { email } = useSelector((state) => state.user);
-  const [mail,setMail] = useState(email);
+  const [mail, setMail] = useState(email);
 
   const navLinks = [
     { name: 'Contact Us', path: '#' },
@@ -76,7 +84,7 @@ const Footer = () => {
   const sendEmail = (e) => {
     e.preventDefault();
 
-    axios.post(`http://localhost:3010/user/send-email`, { email })
+    Axios.post(`/user/send-email`, { email: mail })
       .then(response => {
         console.log(response.data);
       })
@@ -84,7 +92,6 @@ const Footer = () => {
         console.error('Error:', error);
       });
   };
-
 
   return (
     <>
@@ -126,14 +133,14 @@ const Footer = () => {
           <TextField
             type="text"
             size="small"
-            placeholder="enter your mail"
+            placeholder="Enter your mail"
             value={mail}
-            onChange={(e)=>setMail(e.target.value)}
+            onChange={(e) => setMail(e.target.value)}
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
                   <IconButton onClick={sendEmail}>
-                    <MailIcon/>
+                    <MailIcon />
                   </IconButton>
                 </InputAdornment>
               ),
@@ -155,7 +162,7 @@ const Footer = () => {
         </Box>
       </Box>
 
-      <Box className={classes.disclaimer} display={'flex'} flexDirection={'column'} justifyContent={'center'}>
+      <Box className={classes.disclaimer}>
         <Typography variant="body2" className={classes.copyRight}>
           © 2022 Himalaya Wellness. All rights reserved.
         </Typography>

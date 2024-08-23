@@ -7,7 +7,7 @@ import FollowUs from '../followUs/FollowUs';
 const Banner = styled(Box)(({ theme }) => ({
   width: '100%',
   height: '80vh',
-  backgroundImage: 'url(/src/assets/Home/banner1.png)',
+  backgroundImage: 'url(/assets/Home/banner1.png)',
   backgroundRepeat: 'no-repeat',
   backgroundSize: 'cover',
   backgroundPosition: 'center',
@@ -38,6 +38,8 @@ const BannerHeader = styled(Typography)(({ theme }) => ({
   fontWeight: 500,
   marginBottom: theme.spacing(2),
   borderRadius: '4px',
+  fontSize: '3.5rem',
+
 
 }));
 

@@ -56,21 +56,21 @@ const ShopByCategory = () => {
       <Container>
         <BoxItem>
           <Link href="/products/health-interests">
-            <img src="src/assets/Home/shopCategory-banner-1.webp" alt="Supplements" />
+            <img src="/assets/Home/shopCategory-banner-1.webp" alt="Supplements" />
           </Link>
           <BoxTitle>Supplements</BoxTitle>
           <BoxLink href="/products/health-interests">See All Supplements</BoxLink>
         </BoxItem>
         <BoxItem>
           <Link href="/products/oral-care">
-            <img src="src/assets/Home/shopCategory-banner-2.webp" alt="Oral Care" />
+            <img src="/assets/Home/shopCategory-banner-2.webp" alt="Oral Care" />
           </Link>
           <BoxTitle>Oral Care</BoxTitle>
-          <BoxLink href="products/oral-care">See All Oral Care</BoxLink>
+          <BoxLink href="/products/oral-care">See All Oral Care</BoxLink>
         </BoxItem>
         <BoxItem>
           <Link href="/products/personal-care">
-            <img src="src/assets/Home/shopCategory-banner-3.webp" alt="Personal Care" />
+            <img src="/assets/Home/shopCategory-banner-3.webp" alt="Personal Care" />
           </Link>
           <BoxTitle>Personal Care</BoxTitle>
           <BoxLink href="/products/personal-care">See All Personal Care</BoxLink>

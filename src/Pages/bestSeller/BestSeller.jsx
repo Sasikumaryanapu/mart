@@ -1,7 +1,7 @@
 import { Box, Typography, styled } from '@mui/material';
 
 const Parent = styled(Box)(({ theme }) => ({
-  marginTop: theme.spacing(12.5), 
+  marginTop: theme.spacing(12.5),
   textAlign: 'center',
 }));
 
@@ -14,6 +14,10 @@ const ParentContent = styled(Box)(({ theme }) => ({
   justifyContent: 'space-between',
   alignItems: 'center',
   padding: theme.spacing(2.5),
+  [theme.breakpoints.down('md')]: {
+    flexDirection: 'column',
+    height: 'auto',
+  },
 }));
 
 const ParentChild = styled(Box)(({ theme }) => ({
@@ -22,29 +26,48 @@ const ParentChild = styled(Box)(({ theme }) => ({
   width: '80%',
   textAlign: 'left',
   gap: theme.spacing(2.5),
+  [theme.breakpoints.down('md')]: {
+    width: '100%',
+    textAlign: 'center',
+  },
 }));
 
-const Image = styled('img')({
+const Image = styled('img')(({ theme }) => ({
   width: '140px',
   height: '200px',
-});
+  objectFit: 'cover',
+  [theme.breakpoints.down('md')]: {
+    width: '100px',
+    height: 'auto',
+  },
+}));
 
 const Title = styled(Typography)(({ theme }) => ({
   fontSize: '29px',
   color: '#333333',
   fontWeight: 500,
+  [theme.breakpoints.down('sm')]: {
+    fontSize: '24px',
+  },
 }));
 
 const Subtitle = styled(Typography)(({ theme }) => ({
   fontSize: '29px',
   color: '#333333',
   fontWeight: 300,
+  [theme.breakpoints.down('sm')]: {
+    fontSize: '22px',
+  },
 }));
 
 const Paragraph = styled(Typography)(({ theme }) => ({
   fontSize: '16px',
   color: '#333333',
   lineHeight: '28px',
+  [theme.breakpoints.down('sm')]: {
+    fontSize: '14px',
+    lineHeight: '24px',
+  },
 }));
 
 const Container = styled(Box)(({ theme }) => ({
@@ -53,14 +76,18 @@ const Container = styled(Box)(({ theme }) => ({
   display: 'flex',
   flexWrap: 'wrap',
   flexDirection: 'column-reverse',
-  gap: theme.spacing(3), 
+  gap: theme.spacing(3),
   margin: '0px auto',
   alignItems: 'center',
-  padding: theme.spacing(3.75), 
+  padding: theme.spacing(3.75),
   overflowX: 'auto',
   scrollbarWidth: 'none',
   '&::-webkit-scrollbar': {
-    display: 'none', 
+    display: 'none',
+  },
+  [theme.breakpoints.down('md')]: {
+    flexDirection: 'column',
+    width: '70%',
   },
 }));
 
@@ -69,6 +96,11 @@ const BoxItem = styled(Box)(({ theme }) => ({
   height: '200px',
   border: '0.5px solid #ababab',
   textAlign: 'left',
+  marginBottom: theme.spacing(2.5),
+  [theme.breakpoints.down('md')]: {
+    width: '100%',
+    height: 'auto',
+  },
 }));
 
 const BoxTitle = styled(Typography)(({ theme }) => ({
@@ -78,6 +110,9 @@ const BoxTitle = styled(Typography)(({ theme }) => ({
   fontWeight: 400,
   marginLeft: theme.spacing(2.5),
   marginTop: theme.spacing(2.5),
+  [theme.breakpoints.down('sm')]: {
+    fontSize: '14px',
+  },
 }));
 
 const BoxParagraph = styled(Typography)(({ theme }) => ({
@@ -86,6 +121,9 @@ const BoxParagraph = styled(Typography)(({ theme }) => ({
   lineHeight: '22px',
   marginLeft: theme.spacing(2.5),
   marginTop: theme.spacing(2.5),
+  [theme.breakpoints.down('sm')]: {
+    fontSize: '12px',
+  },
 }));
 
 const BoxSpan = styled(Box)(({ theme }) => ({
@@ -93,15 +131,18 @@ const BoxSpan = styled(Box)(({ theme }) => ({
   height: '5px',
   backgroundColor: '#48cab2',
   display: 'inline-block',
-  marginLeft: theme.spacing(2.5), 
-  marginTop: theme.spacing(3), 
+  marginLeft: theme.spacing(2.5),
+  marginTop: theme.spacing(3),
 }));
 
 const Anchors = styled(Box)(({ theme }) => ({
   width: '200px',
   display: 'flex',
-  gap: theme.spacing(1.25), 
+  gap: theme.spacing(1.25),
   margin: '20px auto',
+  [theme.breakpoints.down('sm')]: {
+    width: '150px',
+  },
 }));
 
 const Anchor = styled(Box)(({ theme }) => ({
@@ -126,7 +167,7 @@ const BestSeller = () => {
       <Parent>
         <Typography variant="h4">Best Seller</Typography>
         <ParentContent>
-          <Image src="src/assets/Home/bestSeller.png" alt="Best Seller" />
+          <Image src="/assets/Home/bestSeller.png" alt="Best Seller" />
           <ParentChild>
             <Title>Unlock the Wisdom of Herbs</Title>
             <Subtitle>with Herbal Supplements, Toothpaste & More!</Subtitle>

@@ -4,10 +4,10 @@ import styles from "../register/Register.module.css";
 import TextField from "@mui/material/TextField";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import axios from "axios";
 import { useDispatch } from "react-redux";
 import { setUserData } from "../../redux/slices/userSlices";
 import { makeStyles } from "@mui/styles";
+import Axios from "../../api/Api";
 
 const useStyles = makeStyles({
   link: {
@@ -48,15 +48,15 @@ const Register = () => {
     }
 
     try {
-      const response = await axios.post(
-        "http://localhost:3010/user/register",
+      const response = await Axios.post(
+        "/user/register",
         user
       );
       console.log(response.data, "data",response.data.user._id);
-
+      localStorage.setItem('accessToken', response.data.accessToken);
+      localStorage.setItem('refreshToken', response.data.refreshToken);
       dispatch(setUserData({ email: email, name: fname ,id:response.data.user._id}));
 
-      localStorage.setItem("access_token", response.data.token);
       navigate('/',{replace:true})
       setSnackbarMessage("Successfully Registered!");
       setSnackbarSeverity("success");

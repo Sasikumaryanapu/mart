@@ -2,24 +2,24 @@ import { Button, TextField, Snackbar, Alert } from "@mui/material";
 import styles from "../sign-in/SignIn.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import axios from "axios";
 import { setUserData } from "../../redux/slices/userSlices";
 import { useDispatch } from "react-redux";
+import Axios from "../../api/Api.js";
 
 const SignIn = () => {
   const navigate = useNavigate();
   const [login, setLogin] = useState({ email: "", password: "" });
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState("");
-  const [snackbarSeverity, setSnackbarSeverity] = useState("success"); // 'success' or 'error'
+  const [snackbarSeverity, setSnackbarSeverity] = useState("success"); 
 const dispatch = useDispatch()
   const loginHandler = async () => {
     const token = localStorage.getItem("access_token");
     console.log(token, "token");
 
     try {
-      const response = await axios.post(
-        "http://localhost:3010/user/login",
+      const response = await Axios.post(
+        "/user/login",
         login,
         {
           headers: {
@@ -29,9 +29,11 @@ const dispatch = useDispatch()
       );
       console.log(response.data, "data");
       dispatch(setUserData({ email: response.data.user.email, name: response.data.user.firstname ,id:response.data.user._id}));
-      navigate('/account',{replace:true})
+      navigate('/',{replace:true})
       setSnackbarMessage("Successfully Signed In!");
       setSnackbarSeverity("success");
+      localStorage.setItem('accessToken', response.data.accessToken);
+      localStorage.setItem('refreshToken', response.data.refreshToken);
     } catch (error) {
       console.error("Error logging in:", error);
       setSnackbarMessage("Login Failed. Please check your credentials.");

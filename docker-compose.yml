@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  client:
+    image: mart-client
+    networks:
+      - mart-network
+    ports:
+      - "3000:80"
+
+  server:
+    image: mart-server
+    networks:
+      - my-network
+    ports:
+      - "5000:5000"
+
+networks:
+  my-network:
+    driver: bridge
