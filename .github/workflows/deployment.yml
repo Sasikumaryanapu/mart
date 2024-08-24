@@ -1,4 +1,4 @@
-name: Deploy
+name: CI/CD
 
 on:
   push:
@@ -19,17 +19,27 @@ jobs:
         with:
           node-version: 18
 
-      - name: Install dependencies
-        run: npm i --legacy-peer-deps
+      - name: Install dependencies for client
+        run: |
+          cd client
+          npm install --legacy-peer-deps
 
-      - name: Build project
-        run: npm run build
+      - name: Install dependencies for server
+        run: |
+          cd server
+          npm install --legacy-peer-deps
+
+      - name: Build client project
+        run: |
+          cd client
+          npm run build
 
       - name: Upload production-ready build files
         uses: actions/upload-artifact@v2
         with:
           name: production-files
-          path: ./dist
+          path: |
+            client/dist
 
   deploy:
     name: Deploy

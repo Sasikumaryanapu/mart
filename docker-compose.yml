@@ -2,19 +2,25 @@ version: '3.8'
 
 services:
   client:
-    image: mart-client
+    build:
+      context: ./client
+      dockerfile: Dockerfile
     networks:
       - mart-network
     ports:
       - "3000:80"
+    depends_on:
+      - server
 
   server:
-    image: mart-server
+    build:
+      context: ./server
+      dockerfile: Dockerfile
     networks:
-      - my-network
+      - mart-network
     ports:
       - "5000:5000"
 
 networks:
-  my-network:
+  mart-network:
     driver: bridge
