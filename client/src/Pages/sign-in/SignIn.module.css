@@ -1,0 +1,48 @@
+.container {
+  width: 25%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin: 0 auto;
+  gap: 30px;
+}
+
+.container h1 {
+  font-size: 33px;
+  color: #333333;
+  font-weight: 500;
+}
+
+.container h4 {
+  font-size: 24px;
+  color: #333333;
+  font-weight: 400;
+  text-align: left;
+}
+
+.container button {
+  background-color: #a3b49b;
+}
+
+.container button:hover {
+  background-color: #5b6757;
+}
+
+.child1 {
+  margin-top: 20px;
+}
+
+.child1 h1 {
+  text-align: left;
+  font-size: 24px;
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+
+.child1 p {
+  font-size: 18px;
+  color: #777777;
+  margin-bottom: 20px;
+  text-align: left;
+}
